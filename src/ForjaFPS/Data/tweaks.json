@@ -1,0 +1,219 @@
+{
+  "tweaks": [
+    {
+      "id": "game-mode",
+      "name": "Modo de juego activado",
+      "description": "Windows da prioridad al juego en primer plano y evita que Windows Update reinicie o instale drivers mientras juegas.",
+      "category": "Gaming",
+      "risk": "Seguro",
+      "actions": [
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\GameBar", "name": "AutoGameModeEnabled", "kind": "DWord", "value": "1" },
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\GameBar", "name": "AllowAutoGameMode", "kind": "DWord", "value": "1" }
+      ]
+    },
+    {
+      "id": "gamedvr-off",
+      "name": "Sin grabación en segundo plano (Game DVR)",
+      "description": "Xbox Game Bar deja de grabar el juego continuamente. Game Bar y las capturas manuales siguen funcionando.",
+      "category": "Gaming",
+      "risk": "Seguro",
+      "actions": [
+        { "type": "registry", "path": "HKCU\\System\\GameConfigStore", "name": "GameDVR_Enabled", "kind": "DWord", "value": "0" },
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\GameDVR", "name": "AppCaptureEnabled", "kind": "DWord", "value": "0" }
+      ]
+    },
+    {
+      "id": "gamebar-tips",
+      "name": "Sin panel de bienvenida de Game Bar",
+      "description": "Quita el aviso de Game Bar que aparece al abrir algunos juegos.",
+      "category": "Gaming",
+      "risk": "Seguro",
+      "actions": [
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\GameBar", "name": "ShowStartupPanel", "kind": "DWord", "value": "0" }
+      ]
+    },
+    {
+      "id": "mouse-accel-off",
+      "name": "Sin aceleración del mouse",
+      "description": "El cursor se mueve exactamente lo que mueves el mouse. Mejor puntería en shooters. Se aplica al cerrar sesión.",
+      "category": "Gaming",
+      "risk": "Seguro",
+      "requiresRestart": true,
+      "actions": [
+        { "type": "registry", "path": "HKCU\\Control Panel\\Mouse", "name": "MouseSpeed", "kind": "String", "value": "0" },
+        { "type": "registry", "path": "HKCU\\Control Panel\\Mouse", "name": "MouseThreshold1", "kind": "String", "value": "0" },
+        { "type": "registry", "path": "HKCU\\Control Panel\\Mouse", "name": "MouseThreshold2", "kind": "String", "value": "0" }
+      ]
+    },
+    {
+      "id": "hags",
+      "name": "Programación de GPU acelerada por hardware",
+      "description": "La GPU gestiona su propia memoria de vídeo. Suele reducir latencia en NVIDIA RTX y AMD recientes. Necesario para DLSS Frame Generation.",
+      "category": "Gaming",
+      "risk": "Moderado",
+      "requiresRestart": true,
+      "actions": [
+        { "type": "registry", "path": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\GraphicsDrivers", "name": "HwSchMode", "kind": "DWord", "value": "2" }
+      ]
+    },
+    {
+      "id": "fso-off",
+      "name": "Desactivar optimizaciones de pantalla completa",
+      "description": "Puede ayudar en juegos DX9/DX11 antiguos. En juegos modernos puede empeorar o romper el modo ventana sin bordes: pruébalo y deshazlo si no notas mejora.",
+      "category": "Gaming",
+      "risk": "Avanzado",
+      "actions": [
+        { "type": "registry", "path": "HKCU\\System\\GameConfigStore", "name": "GameDVR_FSEBehaviorMode", "kind": "DWord", "value": "2" },
+        { "type": "registry", "path": "HKCU\\System\\GameConfigStore", "name": "GameDVR_HonorUserFSEBehaviorMode", "kind": "DWord", "value": "1" },
+        { "type": "registry", "path": "HKCU\\System\\GameConfigStore", "name": "GameDVR_DXGIHonorFSEWindowsCompatible", "kind": "DWord", "value": "1" }
+      ]
+    },
+    {
+      "id": "games-priority",
+      "name": "Prioridad alta para juegos (MMCSS)",
+      "description": "Sube la prioridad de CPU y GPU que el planificador multimedia de Windows asigna a los juegos.",
+      "category": "Rendimiento",
+      "risk": "Moderado",
+      "actions": [
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games", "name": "GPU Priority", "kind": "DWord", "value": "8" },
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games", "name": "Priority", "kind": "DWord", "value": "6" },
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games", "name": "Scheduling Category", "kind": "String", "value": "High" },
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile\\Tasks\\Games", "name": "SFIO Priority", "kind": "String", "value": "High" }
+      ]
+    },
+    {
+      "id": "system-responsiveness",
+      "name": "Menos CPU reservada para tareas de fondo",
+      "description": "Windows reserva por defecto un 20% de CPU a tareas multimedia de fondo. Esto lo baja a 10%.",
+      "category": "Rendimiento",
+      "risk": "Moderado",
+      "requiresRestart": true,
+      "actions": [
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Multimedia\\SystemProfile", "name": "SystemResponsiveness", "kind": "DWord", "value": "10" }
+      ]
+    },
+    {
+      "id": "background-apps",
+      "name": "Sin apps de la Store en segundo plano",
+      "description": "Las apps de la Microsoft Store dejan de ejecutarse en segundo plano. Algunas notificaciones (WhatsApp o Teams de la Store) pueden dejar de llegar.",
+      "category": "Rendimiento",
+      "risk": "Moderado",
+      "actions": [
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications", "name": "GlobalUserDisabled", "kind": "DWord", "value": "1" }
+      ]
+    },
+    {
+      "id": "power-high",
+      "name": "Plan de energía Alto rendimiento",
+      "description": "Úsalo con el cargador conectado: sube temperatura y consumo. Deshacer vuelve al plan Equilibrado. En equipos con Modern Standby no existe; usa Configuración > Energía > Mejor rendimiento.",
+      "category": "Rendimiento",
+      "risk": "Moderado",
+      "actions": [
+        {
+          "type": "powershell",
+          "apply": "powercfg /setactive SCHEME_MIN; if ($LASTEXITCODE -ne 0) { throw 'El plan Alto rendimiento no está disponible en este equipo (Modern Standby). Usa Configuración > Sistema > Energía > Modo de energía: Mejor rendimiento.' }",
+          "undo": "powercfg /setactive SCHEME_BALANCED",
+          "check": "if ((powercfg /getactivescheme) -match '8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c') { '1' } else { '0' }"
+        }
+      ]
+    },
+    {
+      "id": "delivery-optimization",
+      "name": "Sin compartir actualizaciones por P2P",
+      "description": "Windows deja de subir actualizaciones a otros PCs por Internet. Libera ancho de banda mientras juegas.",
+      "category": "Rendimiento",
+      "risk": "Seguro",
+      "actions": [
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization", "name": "DODownloadMode", "kind": "DWord", "value": "0" }
+      ]
+    },
+    {
+      "id": "power-throttling-off",
+      "name": "Desactivar Power Throttling",
+      "description": "Windows deja de reducir la CPU a procesos en segundo plano. En laptops gasta bastante más batería y genera más calor.",
+      "category": "Rendimiento",
+      "risk": "Avanzado",
+      "requiresRestart": true,
+      "actions": [
+        { "type": "registry", "path": "HKLM\\SYSTEM\\CurrentControlSet\\Control\\Power\\PowerThrottling", "name": "PowerThrottlingOff", "kind": "DWord", "value": "1" }
+      ]
+    },
+    {
+      "id": "telemetry",
+      "name": "Telemetría al mínimo",
+      "description": "Reduce los datos de diagnóstico y desactiva los servicios DiagTrack y dmwappushservice. En Windows Pro queda en el nivel mínimo permitido.",
+      "category": "Privacidad",
+      "risk": "Moderado",
+      "requiresRestart": true,
+      "actions": [
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection", "name": "AllowTelemetry", "kind": "DWord", "value": "0" },
+        { "type": "registry", "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\DiagTrack", "name": "Start", "kind": "DWord", "value": "4" },
+        { "type": "registry", "path": "HKLM\\SYSTEM\\CurrentControlSet\\Services\\dmwappushservice", "name": "Start", "kind": "DWord", "value": "4" }
+      ]
+    },
+    {
+      "id": "activity-history",
+      "name": "Sin historial de actividad",
+      "description": "Windows deja de registrar y subir las apps y archivos que abres.",
+      "category": "Privacidad",
+      "risk": "Seguro",
+      "actions": [
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "name": "EnableActivityFeed", "kind": "DWord", "value": "0" },
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "name": "PublishUserActivities", "kind": "DWord", "value": "0" },
+        { "type": "registry", "path": "HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System", "name": "UploadUserActivities", "kind": "DWord", "value": "0" }
+      ]
+    },
+    {
+      "id": "advertising-id",
+      "name": "Sin ID de publicidad",
+      "description": "Las apps dejan de usar un identificador para mostrarte anuncios personalizados.",
+      "category": "Privacidad",
+      "risk": "Seguro",
+      "actions": [
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo", "name": "Enabled", "kind": "DWord", "value": "0" }
+      ]
+    },
+    {
+      "id": "bing-search-off",
+      "name": "Búsqueda del menú Inicio sin Bing",
+      "description": "La búsqueda de Inicio solo busca en tu PC: más rápida y sin resultados web.",
+      "category": "Interfaz",
+      "risk": "Seguro",
+      "requiresRestart": true,
+      "actions": [
+        { "type": "registry", "path": "HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer", "name": "DisableSearchBoxSuggestions", "kind": "DWord", "value": "1" }
+      ]
+    },
+    {
+      "id": "consumer-content",
+      "name": "Sin sugerencias ni apps instaladas solas",
+      "description": "Desactiva anuncios en Inicio y Configuración, y que Windows instale apps sugeridas sin pedirlo.",
+      "category": "Interfaz",
+      "risk": "Seguro",
+      "actions": [
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "name": "SilentInstalledAppsEnabled", "kind": "DWord", "value": "0" },
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "name": "SystemPaneSuggestionsEnabled", "kind": "DWord", "value": "0" },
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "name": "SubscribedContent-338388Enabled", "kind": "DWord", "value": "0" },
+        { "type": "registry", "path": "HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager", "name": "SubscribedContent-338389Enabled", "kind": "DWord", "value": "0" }
+      ]
+    }
+  ],
+  "appx": [
+    { "package": "Microsoft.BingNews", "name": "Noticias" },
+    { "package": "Microsoft.BingWeather", "name": "El Tiempo" },
+    { "package": "Microsoft.BingSearch", "name": "Búsqueda de Bing" },
+    { "package": "Microsoft.GetHelp", "name": "Obtener ayuda" },
+    { "package": "Microsoft.Getstarted", "name": "Consejos" },
+    { "package": "Microsoft.MicrosoftSolitaireCollection", "name": "Solitaire Collection" },
+    { "package": "Microsoft.People", "name": "Contactos" },
+    { "package": "Microsoft.WindowsFeedbackHub", "name": "Centro de opiniones" },
+    { "package": "Microsoft.WindowsMaps", "name": "Mapas" },
+    { "package": "Microsoft.Todos", "name": "Microsoft To Do" },
+    { "package": "Microsoft.PowerAutomateDesktop", "name": "Power Automate" },
+    { "package": "Microsoft.MicrosoftOfficeHub", "name": "Microsoft 365 (Office)" },
+    { "package": "Microsoft.549981C3F5F10", "name": "Cortana" },
+    { "package": "Microsoft.YourPhone", "name": "Enlace Móvil" },
+    { "package": "Clipchamp.Clipchamp", "name": "Clipchamp" },
+    { "package": "MSTeams", "name": "Microsoft Teams (personal)" }
+  ]
+}
