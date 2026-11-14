@@ -14,6 +14,12 @@ La idea es simple: cada cambio guarda antes el valor original, así que todo se 
 - **Debloat**: quita apps preinstaladas que no sirven para jugar. Las apps de Xbox no se tocan.
 - **Respaldo**: punto de restauración, deshacer por tweak o deshacer todo.
 
+![ForjaFPS: tweaks con nivel de riesgo y estado](docs/img/forjafps-tweaks.png)
+
+![ForjaFPS: debloat de apps preinstaladas](docs/img/forjafps-debloat.png)
+
+![ForjaFPS: respaldo y deshacer](docs/img/forjafps-respaldo.png)
+
 ## Niveles de riesgo
 
 | Nivel | Qué significa |
