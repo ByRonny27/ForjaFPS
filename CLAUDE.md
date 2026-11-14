@@ -68,7 +68,7 @@ Ya tiene tweaks de WinUtil aplicados (sirve para probar la detección de `Applie
 
 - [x] Arreglar la codificación del README (corregido en "README: corrige codificación").
 - [x] Release v0.1.0 en GitHub con el zip de `dotnet publish`.
-- [ ] Captura de pantalla de la app en el README.
+- [x] Captura de pantalla de la app en el README.
 - [ ] GPU AMD e Intel en el monitor.
 - [ ] Perfiles personalizados guardados por el usuario; exportar/importar configuración.
 - [ ] Limpieza de temporales y caché de shaders.

@@ -4,6 +4,8 @@ Optimizador de Windows para gaming, **open source y reversible**. Hecho en C# co
 
 La idea es simple: cada cambio guarda antes el valor original, así que todo se puede deshacer con un clic. Nada de "ejecuta este script y reza".
 
+![ForjaFPS: monitor del sistema](docs/img/forjafps.png)
+
 ## Qué hace
 
 - **Monitor**: CPU, RAM, GPU NVIDIA (uso, temperatura, VRAM) en tiempo real.
